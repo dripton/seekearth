@@ -5,7 +5,6 @@
 
 import argparse
 from collections import namedtuple, defaultdict
-from pprint import pprint
 
 
 def parse_prefix(prefix_path):
@@ -154,7 +153,6 @@ def main():
     )
     args = parser.parse_args()
     # TODO print errors on missing args
-    print(args)
 
     map_to_prefix = parse_prefix(args.prefix)
     map_to_tuple = parse_xyz(args.xyz)
@@ -162,13 +160,10 @@ def main():
     room_to_xyz = find_all_room_coords(
         map_to_prefix, map_to_tuple, map_to_room_to_xy
     )
-    pprint(room_to_xyz)
     room_to_treasures = parse_treasures(args.treasures)
-    pprint(room_to_treasures)
 
     dds = []
     start_coords = room_to_xyz[args.start]
-    print(f"{start_coords=}")
     for room, treasures in room_to_treasures.items():
         if args.find in treasures:
             dd = find_distance_and_direction(start_coords, room_to_xyz[room])
