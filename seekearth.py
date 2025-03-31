@@ -148,6 +148,7 @@ def main():
         "--number",
         "-n",
         action="store",
+        type=int,
         default=10,
         help="number of results to return",
     )
